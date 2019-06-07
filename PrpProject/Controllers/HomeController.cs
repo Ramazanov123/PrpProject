@@ -170,5 +170,10 @@ namespace PrpProject.Controllers
             ViewBag.Items = context.MoneyManagerItems.Where(it => it.UserId == user.Id);
             ViewBag.User = user;
         }
+
+        public ActionResult Settings()
+        {
+            return View();
+        }
     }
 }

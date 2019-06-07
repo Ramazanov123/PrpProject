@@ -180,6 +180,7 @@
     <Content Include="Views\Home\AddIncome.cshtml" />
     <Content Include="Views\Home\AddRashod.cshtml" />
     <Content Include="Views\Home\Operation.cshtml" />
+    <Content Include="Views\Home\Settings.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

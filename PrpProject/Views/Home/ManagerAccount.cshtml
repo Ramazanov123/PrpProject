@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "ManagerAccount";
+    Layout = "~/Views/Shared/_LayoutAuthorised.cshtml";
+}
+
+@model PrpProject.Models.User
+
+<div><h2>Добро пожаловать, @Model.Name</h2></div>
+<div><h3>Заполните те поля, которые вы хотети изменить</h3></div>
+
+<div>
+    <h3>Форма редактирования</h3>
+    <form method="post" action="">
+        <table>
+            <tr>
+                <td><p>Введите ваше имя </p></td>
+                <td><input type="text" name="Name" value="@Model.Name" /> </td>
+            </tr>
+            <tr>
+                <td><p>Введите вашу фамилию </p></td>
+                <td><input type="text" name="Surname" value="@Model.Surname" /> </td>
+            </tr>
+            <tr>
+                <td><p>Введите ваш логин </p></td>
+                <td><input type="text" name="Login" value="@Model.Login" /> </td>
+            </tr>
+            <tr>
+                <td><p>Введите старый пароль</p></td>
+                <td>
+                    <input type="text" name="OldPassword" />
+                </td>
+            </tr>
+            <tr>
+                <td><p>Введите новый пароль</p></td>
+                <td>
+                    <input type="text" name="NewPassword" />
+                </td>
+            </tr>
+            <tr>
+                <td><p>Подтвердите новый пароль</p></td>
+                <td>
+                    <input type="text" name="NewPasswordS" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Отправить" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+</div>
+

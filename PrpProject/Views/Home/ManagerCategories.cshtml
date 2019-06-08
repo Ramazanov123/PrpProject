@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "ManagerCategories";
+    Layout = "~/Views/Shared/_LayoutAuthorised.cshtml";
+}
+
+<div class="ManagerItemHeader">
+    <h1>Доходы</h1>
+</div>
+@foreach (var item in ViewBag.Items)
+{
+    if (item.State == true)
+    {
+        <div class="wallet-name">@item.Name</div>
+        <a href="/Home/EditCategory/@item.Id">Редактировать</a>
+        <a href="/Home/DeleteCategory/@item.Id">Удалить</a>
+    }
+}
+
+<div class="ManagerItemHeader">
+    <h1>Расходы</h1>
+</div>
+
+<hr />
+<div class="Rashody">
+    @foreach (var item in ViewBag.Items)
+    {
+        if (item.State != true)
+        {
+            <div class="wallet-name">@item.Name</div>
+            <a href="/Home/EditCategory/@item.Id">Редактировать</a>
+            <a href="/Home/DeleteCategory/@item.Id">Удалить</a>
+        }
+    }
+</div>
+

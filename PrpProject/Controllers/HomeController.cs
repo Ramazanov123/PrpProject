@@ -175,5 +175,69 @@ namespace PrpProject.Controllers
         {
             return View();
         }
+
+        public ActionResult ManagerCategories()
+        {
+            ViewBag.Items = context.MoneyManagerItems.Where(it => it.UserId == user.Id);
+            return View();
+        }
+
+        public ActionResult DeleteCategory(int id)
+        {
+            foreach (var item in context.MoneyManagerItems.Where(it => it.UserId == user.Id))
+            {
+                if (item.Id == id)
+                {
+                    context.Entry(item).State = System.Data.Entity.EntityState.Deleted;
+                }
+            }
+            context.SaveChanges();
+            ViewBag.Items = context.MoneyManagerItems.Where(it => it.UserId == user.Id);
+            return View("ManagerCategories");
+        }
+
+        public ActionResult EditCategory(int id)
+        {
+            ViewBag.Item = context.MoneyManagerItems.FirstOrDefault(it => it.Id == id);
+            item = context.MoneyManagerItems.FirstOrDefault(it => it.Id == id);
+            return View(item);
+        }
+        [HttpPost]
+        public ActionResult EditCategory(string name)
+        {
+            foreach (var category in context.MoneyManagerItems.Where(it => it.UserId == user.Id))
+            {
+                if (category.Id == item.Id)
+                {
+                    category.Name = name;
+                }
+            }
+            context.SaveChanges();
+            ViewBag.Items = context.MoneyManagerItems.Where(it => it.UserId == user.Id);
+            return View("ManagerCategories");
+        }
+
+        public ActionResult ManagerAccount()
+        {
+            return View(user);
+        }
+        [HttpPost]
+        public ActionResult ManagerAccount(string name, string surname, string login, string oldPassword, string newPassword, string newPasswordS)
+        {
+            foreach (var us in context.Users.Where(it => it.Id == user.Id))
+            {
+                if (name != null)
+                    us.Name = name;
+                if (surname != null)
+                    us.Surname = surname;
+                if (login != null)
+                    us.Login = login;
+                if (oldPassword != null && newPassword != null && newPasswordS != null && newPassword == newPasswordS)
+                    us.Password = newPassword;
+                user = us;
+            }
+            context.SaveChanges();
+            return View("Settings");
+        }
     }
 }

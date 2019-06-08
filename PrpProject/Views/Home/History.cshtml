@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "History";
+    Layout = "~/Views/Shared/_LayoutAuthorised.cshtml";
+}
+
+<table>
+    <tr>
+        <td><p>Название категории доходов/расходов</p></td>
+        <td><p>Операция</p></td>
+        <td><p>Дата</p></td>
+    </tr>
+    @foreach (var history in ViewBag.Histories)
+    {
+    <tr>
+        <td><p>@history.Name</p></td>
+        <td><p>@history.Operation</p></td>
+        <td><p>@history.Date</p></td>
+    </tr>
+    }
+</table>
+
+
+

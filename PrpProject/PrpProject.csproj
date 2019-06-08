@@ -181,6 +181,10 @@
     <Content Include="Views\Home\AddRashod.cshtml" />
     <Content Include="Views\Home\Operation.cshtml" />
     <Content Include="Views\Home\Settings.cshtml" />
+    <Content Include="Views\Home\ManagerCategories.cshtml" />
+    <Content Include="Views\Home\EditCategory.cshtml" />
+    <Content Include="Views\Home\ManagerAccount.cshtml" />
+    <Content Include="Views\Home\History.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -269,6 +269,8 @@
     <Content Include="Views\Home\ManagerAccount.cshtml" />
     <Content Include="Views\Home\History.cshtml" />
     <Content Include="Views\Home\AddWallet.cshtml" />
+    <Content Include="Views\Home\ManagerWallets.cshtml" />
+    <Content Include="Views\Home\EditWallet.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

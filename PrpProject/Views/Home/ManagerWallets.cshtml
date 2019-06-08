@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "ManagerWallets";
+    Layout = "~/Views/Shared/_LayoutAuthorised.cshtml";
+}
+
+<div class="ManagerItemHeader">
+    <h1>Кошельки</h1>
+</div>
+@foreach (var item in ViewBag.Wallets)
+{
+        <div class="wallet-name">@item.Name</div>
+        <a href="/Home/EditWallet/@item.Id">Редактировать</a>
+        <a href="/Home/DeleteWallet/@item.Id">Удалить</a>
+}
+

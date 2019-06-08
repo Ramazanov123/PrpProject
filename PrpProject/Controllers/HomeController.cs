@@ -12,6 +12,7 @@ namespace PrpProject.Controllers
         ProjectContext context = new ProjectContext();
 
         static User user;
+        static Wallet wallet;
         static MoneyManagerItem item;
 
         public ActionResult Index()
@@ -80,6 +81,7 @@ namespace PrpProject.Controllers
 
         public ActionResult AddIncome()
         {
+            ForViewBug();
             return View();
         }
         [HttpPost]
@@ -150,19 +152,24 @@ namespace PrpProject.Controllers
             {
                 ViewBag.Operation = "расход";
             }
+            ForViewBug();
             return View();
         }
 
         [HttpPost]
-        public ActionResult Operation(string income)
+        public ActionResult Operation(string select, string income)
         {
+            int id = Convert.ToInt32(select);
+            wallet = context.Wallets.FirstOrDefault(wal => wal.Id == id);
             if (item.State)
             {
                 user.Money += Convert.ToInt32(income);
+                wallet.Money += Convert.ToInt32(income);
             }
             else
             {
-                user.Money -= Convert.ToInt32(income);
+                user.Money -= Convert.ToInt32(income); 
+                wallet.Money -= Convert.ToInt32(income);
             }
             foreach (var b in context.Users)
             {
@@ -176,6 +183,7 @@ namespace PrpProject.Controllers
             hystory.Operation = item.State ? "+" + income : "-" + income;
             hystory.UserId = user.Id;
             hystory.Date = DateTime.Now;
+            hystory.WalletName = wallet.Name;
 
             context.Hystories.Add(hystory);
             context.SaveChanges();
@@ -202,6 +210,40 @@ namespace PrpProject.Controllers
         {
             ViewBag.Items = context.MoneyManagerItems.Where(it => it.UserId == user.Id);
             return View();
+        }
+
+        public ActionResult DeleteWallet(int id)
+        {
+            foreach (var wal in context.Wallets.Where(w => w.UserId == user.Id))
+            {
+                if(wal.Id == id)
+                    context.Entry(wal).State = System.Data.Entity.EntityState.Deleted;
+            }
+            context.SaveChanges();
+            ForViewBug();
+            return View("ManagerWallets");
+        }
+
+        public ActionResult EditWallet(int id)
+        {
+            wallet = context.Wallets.FirstOrDefault(it => it.Id == id);
+            return View(wallet);
+        }
+
+        [HttpPost]
+        public ActionResult EditWallet(string name)
+        {
+            foreach (var category in context.Wallets.Where(it => it.UserId == user.Id))
+            {
+                if (category.Id == wallet.Id)
+                {
+                    category.Name = name;
+                }
+            }
+            context.SaveChanges();
+            ViewBag.Items = context.MoneyManagerItems.Where(it => it.UserId == user.Id);
+            ForViewBug();
+            return View("ManagerWallets");
         }
 
         public ActionResult DeleteCategory(int id)
@@ -241,6 +283,12 @@ namespace PrpProject.Controllers
             context.SaveChanges();
             ViewBag.Items = context.MoneyManagerItems.Where(it => it.UserId == user.Id);
             return View("ManagerCategories");
+        }
+
+        public ActionResult ManagerWallets()
+        {
+            ForViewBug();
+            return View();
         }
 
         public ActionResult ManagerAccount()

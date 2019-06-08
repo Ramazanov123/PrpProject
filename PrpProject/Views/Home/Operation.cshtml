@@ -12,6 +12,17 @@
     <form method="post" action="">
         <table>
             <tr>
+                <td><p>Введите название кошелька</p></td>
+                <td>
+                    <select name="select">
+                        @foreach (var item in @ViewBag.Wallets)
+                        {
+                            <option label="@item.Name" value="@item.Id" selected>@item.Name</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+            <tr>
                 <td><p>Введите свой @ViewBag.Operation </p></td>
                 <td><input type="text" name="Income" /> </td>
             </tr>

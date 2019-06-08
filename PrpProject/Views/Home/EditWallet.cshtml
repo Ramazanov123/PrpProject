@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "EditWallet";
+    Layout = "~/Views/Shared/_LayoutAuthorised.cshtml";
+}
+
+@model PrpProject.Models.Wallet
+
+<div><h2>Вы хотите изменить категорию @Model.Name</h2></div>
+
+<div>
+    <h3>Форма редактирования</h3>
+    <form method="post" action="">
+        <table>
+            <tr>
+                <td><p>Введите название кошелька</p></td>
+                <td><input type="text" name="Name" value="@Model.Name" /> </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Отправить" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+</div>
+

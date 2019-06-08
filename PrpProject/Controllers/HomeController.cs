@@ -239,5 +239,13 @@ namespace PrpProject.Controllers
             context.SaveChanges();
             return View("Settings");
         }
+
+        public ActionResult History()
+        {
+            List<Hystory> list = context.Hystories.Where(his => his.UserId == user.Id).ToList<Hystory>();
+            list.Reverse();
+            ViewBag.Histories = list;
+            return View();
+        }
     }
 }

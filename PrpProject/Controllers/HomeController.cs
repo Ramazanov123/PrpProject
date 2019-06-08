@@ -97,6 +97,27 @@ namespace PrpProject.Controllers
             return View("Index");
         }
 
+        public ActionResult AddWallet()
+        {
+            ForViewBug();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddWallet(string name)
+        {
+            Wallet item = new Wallet();
+            item.Name = name;
+            item.UserId = user.Id;
+            item.Money = 0;
+            context.Wallets.Add(item);
+            context.SaveChanges();
+
+            ForViewBug();
+
+            return View("Index");
+        }
+
         public ActionResult AddRashod()
         {
             ForViewBug();
@@ -168,6 +189,7 @@ namespace PrpProject.Controllers
         {
             ViewBag.Hystory = context.Hystories.Where(hys => hys.UserId == user.Id);
             ViewBag.Items = context.MoneyManagerItems.Where(it => it.UserId == user.Id);
+            ViewBag.Wallets = context.Wallets.Where(wal => wal.UserId == user.Id);
             ViewBag.User = user;
         }
 
@@ -184,6 +206,10 @@ namespace PrpProject.Controllers
 
         public ActionResult DeleteCategory(int id)
         {
+            foreach (var item in context.Hystories.Where(it => it.MoneyManagerItemId == id))
+            {
+                context.Entry(item).State = System.Data.Entity.EntityState.Deleted;
+            }
             foreach (var item in context.MoneyManagerItems.Where(it => it.UserId == user.Id))
             {
                 if (item.Id == id)

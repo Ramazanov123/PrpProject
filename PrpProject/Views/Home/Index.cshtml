@@ -3,14 +3,15 @@
     Layout = "~/Views/Shared/_LayoutAuthorised.cshtml";
 }
 <section class="info">
-<div class="budget">
-    Состояние счёта: @ViewBag.User.Money
-</div>
+    <div class="budget">
+        Состояние счёта: @ViewBag.User.Money
+    </div>
+</section>
 
 <div class="ManagerItemHeader">
     Доходы
 </div>
-</section>
+
 
 <hr />
 <div class="Incomes">
@@ -22,7 +23,21 @@
         }
     }
 
-        <a href="/Home/AddIncome"><div class="ManagerItemsPossitive">Добавить категорию доходов"</div></a>
+    <a href="/Home/AddIncome"><div class="ManagerItemsPossitive">Добавить категорию доходов</div></a>
+</div>
+
+<div class="ManagerItemHeader">
+    Кошельки
+</div>
+
+<div class="wallets">
+    @foreach (var item in ViewBag.Wallets)
+    {
+        <div class="wallet-name">@item.Name</div>
+        <div class="wallet-balance">@item.Money</div>
+    }
+
+    <a href="/Home/AddWallet"><div class="add-wallet">Добавить кошелёк</div></a>
 </div>
 
 <div class="ManagerItemHeader">
@@ -38,7 +53,7 @@
             <a href="/Home/Operation/@item.Id"><div class="wallet-name">@item.Name<div class="ManagerItemsNeggative"></div></div></a>
         }
     }
-    <a href="/Home/AddRashod"><div class="ManagerItemsNeggative">Добавить категорию расходов"</div></a>
-</div>    
+    <a href="/Home/AddRashod"><div class="ManagerItemsNeggative">Добавить категорию расходов</div></a>
+</div>
 
 

@@ -11,5 +11,6 @@ namespace PrpProject.Models
         public DbSet<User> Users { get; set; }
         public DbSet<Hystory> Hystories { get; set; }
         public DbSet<MoneyManagerItem> MoneyManagerItems { get; set; }
+        public DbSet<Wallet> Wallets { get; set; }
     }
 }

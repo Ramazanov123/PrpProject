@@ -10,6 +10,7 @@ namespace PrpProject.Models
         public int Id { get; set; }
         public int UserId { get; set; }
         public int MoneyManagerItemId { get; set; }
+        public int WalletId { get; set; }
         public string Name { get; set; }
         public string Operation { get; set; }
         public DateTime Date { get; set; }

@@ -1,4 +1,4 @@
-﻿body {
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -23,16 +23,50 @@ textarea {
     max-width: 280px;
 }
 
-.ManagerItemsPossitive {
-    width: 80px;
-    height: 65px;
-    background-color: lightblue;
-    display: inline-block;
+.wallet-box {
+    display: flex;
+    min-height: 120px;
 }
 
-.ManagerItemsNeggative {
-    width: 80px;
-    height: 65px;
-    background-color: burlywood;
-    display: inline-block;
+.wallet {
+    margin-right: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.wallet-icon {
+    display: block;
+    width: 100px;
+    height: 100px;
+    background: burlywood;
+    border-radius: 100%;
+    margin: 20px auto;
+}
+
+.wallet-icon-add {
+    opacity: 0.6;
+}
+
+.wallet-icon-income, .wallet-icon-add-income {
+    background-color: deepskyblue;
+}
+
+.wallet-icon-wallet, .wallet-icon-add-wallet {
+    background-color: sandybrown;
+}
+
+.wallet-icon-expense, .wallet-icon-add-expense {
+    background-color: limegreen;
+}
+
+.wallet-name {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 1em;
+}
+
+.empty-space {
+    height: 20px;
 }

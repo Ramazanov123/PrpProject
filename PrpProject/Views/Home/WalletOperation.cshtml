@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "WalletOperation";
+    Layout = "~/Views/Shared/_LayoutAuthorised.cshtml";
+}
+
+@model PrpProject.Models.Wallet
+<div>
+    <form method="post" action="">
+        <table>
+            <tr>
+                <td><p>Измените баланс вашего кошелька "@Model.Name" </p></td>
+                <td><input type="text" name="money" value="@Model.Money" /> </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Добавить" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+</div>

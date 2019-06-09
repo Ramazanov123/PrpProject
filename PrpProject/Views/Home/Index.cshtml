@@ -20,6 +20,7 @@
                 <a class="wallet" href="/Home/Operation/@item.Id">
                     <div class="wallet-name">@item.Name</div>
                     <div class="wallet-icon wallet-icon-income"></div>
+                    <div class="wallet-balance">@item.Balance</div>
                 </a>
             }
         }
@@ -38,11 +39,13 @@
     <div class="wallet-box">
         @foreach (var item in ViewBag.Wallets)
         {
+        <a class="wallet" href="/Home/WalletOperation/@item.Id">
             <div class="wallet">
                 <div class="wallet-name">@item.Name</div>
                 <div class="wallet-icon wallet-icon-wallet"></div>
                 <div class="wallet-balance">@item.Money</div>
             </div>
+        </a>
         }
         <a class="wallet add-wallet" href="/Home/AddWallet">
             <div class="empty-space"></div>
@@ -64,6 +67,7 @@
                 <a class="wallet" href="/Home/Operation/@item.Id">
                     <div class="wallet-name">@item.Name</div>
                     <div class="wallet-icon wallet-icon-expense"></div>
+                    <div class="wallet-balance">@item.Balance</div>
                 </a>
             }
         }

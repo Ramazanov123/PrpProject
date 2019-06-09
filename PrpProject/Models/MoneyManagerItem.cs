@@ -11,5 +11,6 @@ namespace PrpProject.Models
         public int UserId { get; set; }
         public string Name { get; set; }
         public bool State { get; set; }
+        public decimal Balance { get; set; }
     }
 }

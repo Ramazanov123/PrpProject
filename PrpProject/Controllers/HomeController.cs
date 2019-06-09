@@ -70,6 +70,12 @@ namespace PrpProject.Controllers
                 context.SaveChanges();
 
                 ViewBag.RegistrationMessage = "Вы успешно зарегистрировались";
+                foreach (var us in context.Users)
+                {
+                    if (us.Login == Login)
+                        user = us;
+                }
+                AddInitialItems(user.Id);
                 return View();
             }
             else
@@ -77,6 +83,73 @@ namespace PrpProject.Controllers
                 ViewBag.RegistrationMessage = "Пароли не совпадают";
                 return View("Registration");
             }
+        }
+
+        public void AddInitialItems(int userId)
+        {
+            wallet = new Wallet();
+            wallet.Name = "Wallet";
+            wallet.UserId = userId;
+            wallet.Money = 0;
+            context.Wallets.Add(wallet);
+            wallet = new Wallet();
+            wallet.Name = "Bank Account";
+            wallet.UserId = userId;
+            wallet.Money = 0;
+            context.Wallets.Add(wallet);
+
+            item = new MoneyManagerItem();
+            item.UserId = userId;
+            item.State = true;
+            item.Name = "Income";
+            item.Balance = 0;
+            context.MoneyManagerItems.Add(item);
+
+            item = new MoneyManagerItem();
+            item.UserId = userId;
+            item.State = false;
+            item.Name = "Groceries";
+            item.Balance = 0;
+            context.MoneyManagerItems.Add(item);
+            item = new MoneyManagerItem();
+            item.UserId = userId;
+            item.State = false;
+            item.Name = "Transport";
+            item.Balance = 0;
+            context.MoneyManagerItems.Add(item);
+            item = new MoneyManagerItem();
+            item.UserId = userId;
+            item.State = false;
+            item.Name = "Shopping";
+            item.Balance = 0;
+            context.MoneyManagerItems.Add(item);
+            item = new MoneyManagerItem();
+            item.UserId = userId;
+            item.State = false;
+            item.Name = "Eating outside";
+            item.Balance = 0;
+            context.MoneyManagerItems.Add(item);
+            item = new MoneyManagerItem();
+            item.UserId = userId;
+            item.State = false;
+            item.Name = "House";
+            item.Balance = 0;
+            context.MoneyManagerItems.Add(item);
+            item = new MoneyManagerItem();
+            item.UserId = userId;
+            item.State = false;
+            item.Name = "Entertainment";
+            item.Balance = 0;
+            context.MoneyManagerItems.Add(item);
+            item = new MoneyManagerItem();
+            item.UserId = userId;
+            item.State = false;
+            item.Name = "Services";
+            item.Balance = 0;
+            context.MoneyManagerItems.Add(item);
+
+            context.SaveChanges();
+
         }
 
         public ActionResult AddIncome()
@@ -165,16 +238,23 @@ namespace PrpProject.Controllers
             {
                 user.Money += Convert.ToInt32(income);
                 wallet.Money += Convert.ToInt32(income);
+                item.Balance += Convert.ToInt32(income);
             }
             else
             {
                 user.Money -= Convert.ToInt32(income); 
                 wallet.Money -= Convert.ToInt32(income);
+                item.Balance -= Convert.ToInt32(income);
             }
             foreach (var b in context.Users)
             {
                 if (b.Id == user.Id)
                     b.Money = user.Money;
+            }
+            foreach (var b in context.MoneyManagerItems.Where(i => i.UserId == user.Id))
+            {
+                if (b.Id == item.Id)
+                    b.Balance = item.Balance;
             }
 
             Hystory hystory = new Hystory();
@@ -191,6 +271,32 @@ namespace PrpProject.Controllers
             ForViewBug();
 
             return View("Index");
+        }
+
+        public ActionResult WalletOperation(int id)
+        {
+            foreach (var wal in context.Wallets.Where(w => w.UserId == user.Id))
+            {
+                if (wal.Id == id)
+                    wallet = wal;
+            }
+            return View(wallet);
+        }
+
+        [HttpPost]
+        public ActionResult WalletOperation(string money)
+        {
+            wallet.Money = Convert.ToDecimal(money);
+
+            foreach (var wal in context.Wallets.Where(w => w.UserId == user.Id))
+            {
+                if (wal.Id == wallet.Id)
+                    wal.Money = wallet.Money;
+            }
+            context.SaveChanges();
+            ForViewBug();
+            return View("Index");
+
         }
 
         public void ForViewBug()

@@ -23,6 +23,7 @@ namespace PrpProject.Controllers
 
         public ActionResult Login()
         {
+            ForViewBug();
             return View();
         }
         [HttpPost]

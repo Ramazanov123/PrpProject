@@ -165,16 +165,23 @@ namespace PrpProject.Controllers
             {
                 user.Money += Convert.ToInt32(income);
                 wallet.Money += Convert.ToInt32(income);
+                item.Balance += Convert.ToInt32(income);
             }
             else
             {
                 user.Money -= Convert.ToInt32(income); 
                 wallet.Money -= Convert.ToInt32(income);
+                item.Balance -= Convert.ToInt32(income);
             }
             foreach (var b in context.Users)
             {
                 if (b.Id == user.Id)
                     b.Money = user.Money;
+            }
+            foreach (var b in context.MoneyManagerItems.Where(i => i.UserId == user.Id))
+            {
+                if (b.Id == item.Id)
+                    b.Balance = item.Balance;
             }
 
             Hystory hystory = new Hystory();

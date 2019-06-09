@@ -193,6 +193,32 @@ namespace PrpProject.Controllers
             return View("Index");
         }
 
+        public ActionResult WalletOperation(int id)
+        {
+            foreach (var wal in context.Wallets.Where(w => w.UserId == user.Id))
+            {
+                if (wal.Id == id)
+                    wallet = wal;
+            }
+            return View(wallet);
+        }
+
+        [HttpPost]
+        public ActionResult WalletOperation(string money)
+        {
+            wallet.Money = Convert.ToDecimal(money);
+
+            foreach (var wal in context.Wallets.Where(w => w.UserId == user.Id))
+            {
+                if (wal.Id == wallet.Id)
+                    wal.Money = wallet.Money;
+            }
+            context.SaveChanges();
+            ForViewBug();
+            return View("Index");
+
+        }
+
         public void ForViewBug()
         {
             ViewBag.Hystory = context.Hystories.Where(hys => hys.UserId == user.Id);

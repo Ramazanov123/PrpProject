@@ -253,6 +253,7 @@
     <Content Include="Views\Home\AddWallet.cshtml" />
     <Content Include="Views\Home\ManagerWallets.cshtml" />
     <Content Include="Views\Home\EditWallet.cshtml" />
+    <Content Include="Views\Home\WalletOperation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

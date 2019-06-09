@@ -70,6 +70,12 @@ namespace PrpProject.Controllers
                 context.SaveChanges();
 
                 ViewBag.RegistrationMessage = "Вы успешно зарегистрировались";
+                foreach (var us in context.Users)
+                {
+                    if (us.Login == Login)
+                        user = us;
+                }
+                AddInitialItems(user.Id);
                 return View();
             }
             else
@@ -77,6 +83,73 @@ namespace PrpProject.Controllers
                 ViewBag.RegistrationMessage = "Пароли не совпадают";
                 return View("Registration");
             }
+        }
+
+        public void AddInitialItems(int userId)
+        {
+            wallet = new Wallet();
+            wallet.Name = "Wallet";
+            wallet.UserId = userId;
+            wallet.Money = 0;
+            context.Wallets.Add(wallet);
+            wallet = new Wallet();
+            wallet.Name = "Bank Account";
+            wallet.UserId = userId;
+            wallet.Money = 0;
+            context.Wallets.Add(wallet);
+
+            item = new MoneyManagerItem();
+            item.UserId = userId;
+            item.State = true;
+            item.Name = "Income";
+            item.Balance = 0;
+            context.MoneyManagerItems.Add(item);
+
+            item = new MoneyManagerItem();
+            item.UserId = userId;
+            item.State = false;
+            item.Name = "Groceries";
+            item.Balance = 0;
+            context.MoneyManagerItems.Add(item);
+            item = new MoneyManagerItem();
+            item.UserId = userId;
+            item.State = false;
+            item.Name = "Transport";
+            item.Balance = 0;
+            context.MoneyManagerItems.Add(item);
+            item = new MoneyManagerItem();
+            item.UserId = userId;
+            item.State = false;
+            item.Name = "Shopping";
+            item.Balance = 0;
+            context.MoneyManagerItems.Add(item);
+            item = new MoneyManagerItem();
+            item.UserId = userId;
+            item.State = false;
+            item.Name = "Eating outside";
+            item.Balance = 0;
+            context.MoneyManagerItems.Add(item);
+            item = new MoneyManagerItem();
+            item.UserId = userId;
+            item.State = false;
+            item.Name = "House";
+            item.Balance = 0;
+            context.MoneyManagerItems.Add(item);
+            item = new MoneyManagerItem();
+            item.UserId = userId;
+            item.State = false;
+            item.Name = "Entertainment";
+            item.Balance = 0;
+            context.MoneyManagerItems.Add(item);
+            item = new MoneyManagerItem();
+            item.UserId = userId;
+            item.State = false;
+            item.Name = "Services";
+            item.Balance = 0;
+            context.MoneyManagerItems.Add(item);
+
+            context.SaveChanges();
+
         }
 
         public ActionResult AddIncome()

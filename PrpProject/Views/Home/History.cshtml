@@ -4,20 +4,20 @@
     Layout = "~/Views/Shared/_LayoutAuthorised.cshtml";
 }
 
-<table>
-    <tr>
-        <td><p>Название категории доходов/расходов</p></td>
-        <td><p>Название кошелька</p></td>
-        <td><p>Операция</p></td>
-        <td><p>Дата</p></td>
+<table class="table">
+    <tr class="table-heading">
+        <td><p>Category</p></td>
+        <td><p>Wallet</p></td>
+        <td><p>Operation</p></td>
+        <td><p>Date</p></td>
     </tr>
     @foreach (var history in ViewBag.Histories)
     {
     <tr>
-        <td><p>@history.Name</p></td>
-        <td><p>@history.WalletName</p></td>
-        <td><p>@history.Operation</p></td>
-        <td><p>@history.Date</p></td>
+        <td>@history.Name</td>
+        <td>@history.WalletName</td>
+        <td>@history.Operation</td>
+        <td>@history.Date</td>
     </tr>
     }
 </table>

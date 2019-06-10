@@ -2,26 +2,14 @@
 @{
     ViewBag.Title = "Login";
 }
-<div>
-    <h3>Форма авторизации</h3>
-    <form method="post" action="">
-        <table>
-            <tr>
-                <td><p>Введите свой логин </p></td>
-                <td><input type="text" name="Login" /> </td>
-            </tr>
-            <tr>
-                <td><p>Введите пароль</p></td>
-                <td>
-                    <input type="text" name="Password" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" value="Отправить" />
-                </td>
-                <td></td>
-            </tr>
-        </table>
-    </form>
-</div>
+
+        <div class="form col-md-5">
+            <h3>Log In</h3>
+            <form method="post" action="">
+                <div class="form-group text-right">
+                    <input type="text" class="form-control" placeholder="username" name="Login"/>
+                    <input type="password" class="form-control" placeholder="password" name="Password"/>
+                    <input type="submit" class="btn btn-md btn-success" value="LOGIN" />
+                </div>
+            </form>
+        </div>

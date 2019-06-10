@@ -7,9 +7,9 @@
 <div>
     @foreach (var b in @ViewBag.Income)
     {
-        <p>Вы хотите добавить свой @ViewBag.Operation в категорию @b.Name </p>
+        <p>Add @ViewBag.Operation to @b.Name </p>
     }
-    <form method="post" action="">
+    <!-- <form method="post" action="">
         <table>
             <tr>
                 <td><p>Введите название кошелька</p></td>
@@ -33,6 +33,26 @@
                 <td></td>
             </tr>
         </table>
+    </form> -->
+</div> 
+
+<div class="col-md-4">
+    <h3>Adding Wallet</h3>
+    <form method="post" action="">
+        <div class="form-group">
+            <label for="select">Choose wallet</label>
+            <select class="form-control" id="select" name="select">
+                @foreach (var item in @ViewBag.Wallets)
+                {
+                    <option label="@item.Name" value="@item.Id" selected>@item.Name</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="operation">Enter your @ViewBag.Operation</label>
+            <input type="text" class="form-control" id="operation" name="Income" />
+        </div>
+        <input type="submit" value="Add" class="btn btn-success"/>
     </form>
 </div>
 

@@ -3,7 +3,6 @@
     ViewBag.Title = "Registration";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 @if (ViewBag.RegistrationMessage != null)
 {
     <script type="text/javascript">
@@ -12,41 +11,21 @@
             }
     </script>
 }
-    <div>
-        <h3>Форма регистрации</h3>
-        <form method="post" action="">
-            <table>
-                <tr>
-                    <td><p>Введите своё имя </p></td>
-                    <td><input type="text" name="Name" /> </td>
-                </tr>
-                <tr>
-                    <td><p>Введите свою фамилию </p></td>
-                    <td><input type="text" name="Surname" /> </td>
-                </tr>
-                <tr>
-                    <td><p>Введите свой логин </p></td>
-                    <td><input type="text" name="Login" /> </td>
-                </tr>
-                <tr>
-                    <td><p>Введите пароль</p></td>
-                    <td>
-                        <input type="text" name="Password" />
-                    </td>
-                </tr>
-                <tr>
-                    <td><p>Повторите пароль</p></td>
-                    <td>
-                        <input type="text" name="PasswordS" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="submit" value="Отправить" />
-                    </td>
-                    <td></td>
-                </tr>
-            </table>
-        </form>
-    </div>
+        <div class="form col-md-5">
+            <h3>Sign Up</h3>
+            <form method="post" action="">
+                <div class="form-group text-right">
+                    <input type="text" class="form-control" placeholder="name" name="Name" />
+                    <input type="text" class="form-control" placeholder="surname" name="Surname" />
+                    <input type="text" class="form-control" placeholder="username" name="Login"/>
+                    <input type="password" class="form-control" placeholder="password" name="Password"/>
+                    <input type="password" class="form-control" placeholder="password" name="PasswordS"/>
+                    <input type="submit" class="btn btn-md btn-success" value="SIGN UP"/>
+                </div>
+            </form>
+        </div>
+
+
+
+
 

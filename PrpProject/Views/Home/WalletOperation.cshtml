@@ -5,19 +5,12 @@
 }
 
 @model PrpProject.Models.Wallet
-<div>
-    <form method="post" action="">
-        <table>
-            <tr>
-                <td><p>Измените баланс вашего кошелька "@Model.Name" </p></td>
-                <td><input type="text" name="money" value="@Model.Money" /> </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" value="Добавить" />
-                </td>
-                <td></td>
-            </tr>
-        </table>
-    </form>
-</div>
+        <div class="col-md-5">
+            <h4>Edit ballance of "@Model.Name"</h4>
+            <form method="post" action="">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="username" name="money" value="@Model.Money"/>
+                    <input type="submit" class="btn btn-md btn-success" value="Edit" />
+                </div>
+            </form>
+        </div>

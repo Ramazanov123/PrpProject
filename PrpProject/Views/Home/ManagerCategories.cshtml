@@ -4,33 +4,48 @@
     Layout = "~/Views/Shared/_LayoutAuthorised.cshtml";
 }
 
-<div class="ManagerItemHeader">
-    <h1>Доходы</h1>
-</div>
-@foreach (var item in ViewBag.Items)
-{
-    if (item.State == true)
-    {
-        <div class="wallet-name">@item.Name</div>
-        <a href="/Home/EditCategory/@item.Id">Редактировать</a>
-        <a href="/Home/DeleteCategory/@item.Id">Удалить</a>
-    }
-}
+<div class="content content-box">
+    <div class="header">
+        <h2>Income</h2>
+    </div>
 
-<div class="ManagerItemHeader">
-    <h1>Расходы</h1>
-</div>
-
-<hr />
-<div class="Rashody">
-    @foreach (var item in ViewBag.Items)
-    {
-        if (item.State != true)
+    <div class="wallet-box">
+        @foreach (var item in ViewBag.Items)
         {
-            <div class="wallet-name">@item.Name</div>
-            <a href="/Home/EditCategory/@item.Id">Редактировать</a>
-            <a href="/Home/DeleteCategory/@item.Id">Удалить</a>
+            if (item.State == true)
+            {
+                <div class="wallet">
+                    <div class="wallet-name">@item.Name</div>
+                    <div class="wallet-icon wallet-icon-income"></div>
+                    <a href="/Home/EditCategory/@item.Id">Edit</a>
+                    <a href="/Home/DeleteCategory/@item.Id">Delete</a>
+                </div>
+            }
         }
-    }
-</div>
+    </div>
 
+    <div class="header">
+        <h2>Expenses</h2>
+    </div>
+
+    <hr />
+    <div class="expenses">
+        <div class="wallet-box">
+            @foreach (var item in ViewBag.Items)
+            {
+                if (item.State != true)
+                {
+                    
+                    <div class="wallet">
+                        <div class="wallet-name">@item.Name</div>
+                        <div class="wallet-icon wallet-icon-expense"></div>
+                        <div class="edit">
+                            <a href="/Home/EditCategory/@item.Id">Edit </a>
+                            <a href="/Home/DeleteCategory/@item.Id">Delete </a>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

@@ -1,35 +1,61 @@
+@font-face{
+    font-family: "Lato", sans-serif;
+    src: url(http://fonts.googleapis.com/css?family=Lato:400,700);
+}
+
+/* Main */
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    font-family: 'Roboto', sans-serif !important;
+    padding: 0px !important;
+    background-color: #f2f2f2;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+a{
+    text-decoration: none;
+    color: #494949;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+a:hover {
+    text-decoration: none;
+    color: black;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.container{
+    width: 992px;
 }
+
+.content-box {
+    background-color: white;
+    box-shadow: 0 1px 6px rgba(57,73,76,0.35);
+}
+
+.content section, .header{
+    border-bottom: .5px #E0E0E0 solid;
+}
+
+.wallet-box, .header, .budget{
+    padding: 20px 40px;
+}
+
+.budget {
+    font-weight: 700;
+}
+
+.header{
+    background-color: #f2f2f2;
+}
+
+/* Wallets*/
 
 .wallet-box {
     display: flex;
     min-height: 120px;
+    flex-wrap: wrap;
 }
 
 .wallet {
-    margin-right: 20px;
+    margin-right: 26px;
+    margin-bottom: 40px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -40,24 +66,59 @@ textarea {
     width: 100px;
     height: 100px;
     background: burlywood;
-    border-radius: 100%;
+    /* border-radius: 100%; */
     margin: 20px auto;
 }
 
-.wallet-icon-add {
-    opacity: 0.6;
+.empty-space {
+    height: 20px;
 }
 
-.wallet-icon-income, .wallet-icon-add-income {
-    background-color: deepskyblue;
+/* Icons */
+/* .wallet-icon-add {
+    opacity: 0.9;
+} */
+.wallet-icon-add-income{
+    background: url(../Content/images/plus-sign-income.svg);
+    background-size: 85%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+.wallet-icon-add-wallet{
+    background: url(../Content/images/plus-sign-wallet.svg);
+    background-size: 85%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+.wallet-icon-add-expense{
+    background: url(../Content/images/plus-sign-expense.svg);
+    background-size: 85%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
 }
 
-.wallet-icon-wallet, .wallet-icon-add-wallet {
-    background-color: sandybrown;
+.wallet-icon-income {
+    background: url(../Content/images/income.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 70% 40%;
+    background-color: white;
 }
 
-.wallet-icon-expense, .wallet-icon-add-expense {
-    background-color: limegreen;
+.wallet-icon-wallet {
+    background: url(../Content/images/wallet.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 70% 30%;
+    background-color: white;
+}
+
+.wallet-icon-expense {
+    background: url(../Content/images/expense.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 70% 30%;
+    background-color: white;
 }
 
 .wallet-name {
@@ -67,6 +128,85 @@ textarea {
     font-size: 1em;
 }
 
-.empty-space {
-    height: 20px;
+/* Ballance color */
+
+.ballance-money-income {
+    color: deepskyblue;
+}
+
+.ballance-money-wallets {
+    color: burlywood;
+}
+
+.ballance-money-expenses {
+    color: limegreen;
+}
+
+/* Navbar */
+
+.navbar{
+    padding: 5px;
+    background-color: white;
+    box-shadow: 0 1px 6px rgba(57,73,76,0.35);
+}
+
+.navbar-nav {
+    float: right;
+}
+
+.navbar-nav li a{    
+    color: rgb(89, 89, 104);
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 0 15px;
+    font-size: 1.5rem;
+}
+
+.navbar-nav li a:hover{    
+    color: black;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    background-color: transparent;
+}
+
+/* Table */
+
+.table {
+    background-color: white;
+    box-shadow: 0 1px 6px rgba(57,73,76,0.35);
+}
+
+.table .table-heading{
+    font-weight: 600;
+}
+
+
+/* Footer */
+footer {
+    position: absolute;
+    width: 100%;
+    margin-top: 50px;
+    background-color: #494949;
+    color: white;
+    padding: 80px 0 100px;
+}
+
+/* Forms */
+
+.form-group input {
+    margin: 15px auto;
+}
+
+div.form {
+    margin: 0 auto;
+    float: none;
+}
+#settings {
+    margin-top: 40px;
+}
+
+#settings a div{
+    margin: 10px;
+    font-size: 1.6rem;
 }

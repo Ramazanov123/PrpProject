@@ -8,12 +8,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -23,12 +24,12 @@
                 </button>
 
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse stroke">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Главная", "Index", "Home")</li>
-                    <li><a href="/Home/History">История</a></li>
-                    <li>@Html.ActionLink("Настройки", "Settings", "Home")</li>
-                    <li>@Html.ActionLink("Выйти", "Login", "Home")</li>
+                    <li>@Html.ActionLink("Main", "Index", "Home")</li>
+                    <li><a href="/Home/History">History</a></li>
+                    <li>@Html.ActionLink("Settings", "Settings", "Home")</li>
+                    <li>@Html.ActionLink("Log out", "Login", "Home")</li>
                 </ul>
             </div>
         </div>
@@ -38,7 +39,10 @@
         <hr />
     </div>
     <footer>
-        <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
+        <div class="container">
+            <p>&copy; @DateTime.Now.Year – ASP.NET application</p>
+        </div>
+        
     </footer>
 
     @Scripts.Render("~/bundles/jquery")

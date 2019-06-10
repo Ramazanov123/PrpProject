@@ -4,20 +4,13 @@
     Layout = "~/Views/Shared/_LayoutAuthorised.cshtml";
 }
 
-<div>
-    <h3>Форма добавления источника расходов</h3>
+<div class="col-md-4">
+    <h3>Adding Expense</h3>
     <form method="post" action="">
-        <table>
-            <tr>
-                <td><p>Введите название расхода</p></td>
-                <td><input type="text" name="Name" /> </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" value="Добавить" />
-                </td>
-                <td></td>
-            </tr>
-        </table>
+        <div class="form-group">
+            <label for="income">Enter the name</label>
+            <input type="text" class="form-control" placeholder="Expense" id="income" name="Name" />
+        </div>
+        <input type="submit" value="Add" class="btn btn-success"/>
     </form>
 </div>

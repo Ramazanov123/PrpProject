@@ -3,14 +3,20 @@
     ViewBag.Title = "ManagerWallets";
     Layout = "~/Views/Shared/_LayoutAuthorised.cshtml";
 }
-
-<div class="ManagerItemHeader">
-    <h1>Кошельки</h1>
+<div class="content content-box">
+<div class="header">
+    <h2>Wallets</h2>
 </div>
-@foreach (var item in ViewBag.Wallets)
-{
-        <div class="wallet-name">@item.Name</div>
-        <a href="/Home/EditWallet/@item.Id">Редактировать</a>
-        <a href="/Home/DeleteWallet/@item.Id">Удалить</a>
-}
 
+<div class="wallet-box">
+        @foreach (var item in ViewBag.Wallets)
+        {
+            <div class="wallet">
+                <div class="wallet-name">@item.Name</div>
+                <div class="wallet-icon wallet-icon-wallet"></div>
+                <a href="/Home/EditWallet/@item.Id">Edit</a>
+                <a href="/Home/DeleteWallet/@item.Id">Delete</a>
+            </div>
+        }
+    </div>
+</div>

@@ -3,79 +3,79 @@
     Layout = "~/Views/Shared/_LayoutAuthorised.cshtml";
 }
 <section class="info">
-    <h5 class="budget">Состояние счёта: @ViewBag.User.Money</h5>
+    <h4 class="budget">Balance: @ViewBag.User.Money</h4>
 </section>
 
-<hr />
-
-<section class="income">
-
-    <h4 class="wallet-header">Доходы</h4>
-
-    <div class="wallet-box">
-        @foreach (var item in ViewBag.Items)
-        {
-            if (item.State == true)
+<div class="content content-box">
+    <section class="income">
+    
+        <div class="header">
+            <h4 class="wallet-header">Income</h4>  
+        </div>
+        
+        <div class="wallet-box">
+            @foreach (var item in ViewBag.Items)
             {
-                <a class="wallet" href="/Home/Operation/@item.Id">
-                    <div class="wallet-name">@item.Name</div>
-                    <div class="wallet-icon wallet-icon-income"></div>
-                    <div class="wallet-balance">@item.Balance</div>
-                </a>
+                if (item.State == true)
+                {
+                    <a class="wallet" href="/Home/Operation/@item.Id">
+                        <div class="wallet-name">@item.Name</div>
+                        <div class="wallet-icon wallet-icon-income"></div>
+                        <div class="wallet-balance"><span class="ballance-money ballance-money-income"> @item.Balance</span></div>
+                    </a>
+                }
             }
-        }
-        <a class="wallet add-wallet" href="/Home/AddIncome">
-            <div class="empty-space"></div>            
-            <div class="wallet-icon wallet-icon-add wallet-icon-add-income"></div>
-        </a>
-    </div>
-</section>
+            <a class="wallet add-wallet" href="/Home/AddIncome">
+                <div class="empty-space"></div>            
+                <div class="wallet-icon wallet-icon-add wallet-icon-add-income"></div>
+            </a>
+        </div>
+    </section>
 
-<hr />
+    <section class="wallets">
+        <div class="header">
+            <h4 class="wallet-header">Wallets</h4>  
+        </div>
 
-<section class="wallets">
-    <h4 class="wallet-header">Кошельки</h4>
-
-    <div class="wallet-box">
-        @foreach (var item in ViewBag.Wallets)
-        {
-        <a class="wallet" href="/Home/WalletOperation/@item.Id">
-            <div class="wallet">
-                <div class="wallet-name">@item.Name</div>
-                <div class="wallet-icon wallet-icon-wallet"></div>
-                <div class="wallet-balance">@item.Money</div>
-            </div>
-        </a>
-        }
-        <a class="wallet add-wallet" href="/Home/AddWallet">
-            <div class="empty-space"></div>
-            <div class="wallet-icon wallet-icon-add wallet-icon-add-wallet"></div>
-        </a>
-    </div>
-</section>
-
-<hr />
-
-<section class="expenses">
-    <h4 class="wallet-header">Расходы</h4>
-
-    <div class="wallet-box">
-        @foreach (var item in ViewBag.Items)
-        {
-            if (item.State != true)
+        <div class="wallet-box">
+            @foreach (var item in ViewBag.Wallets)
             {
-                <a class="wallet" href="/Home/Operation/@item.Id">
+            <a class="wallet" href="/Home/WalletOperation/@item.Id">
                     <div class="wallet-name">@item.Name</div>
-                    <div class="wallet-icon wallet-icon-expense"></div>
-                    <div class="wallet-balance">@item.Balance</div>
-                </a>
+                    <div class="wallet-icon wallet-icon-wallet"></div>
+                    <div class="wallet-balance"> <span class="ballance-money ballance-money-wallets"> @item.Money</span></div>
+            </a>
             }
-        }
-        <a class="wallet add-wallet" href="/Home/AddRashod">
-            <div class="empty-space"></div>
-            <div class="wallet-icon wallet-icon-add wallet-icon-add-expense"></div>
-        </a>
-    </div>
-</section>
+            <a class="wallet add-wallet" href="/Home/AddWallet">
+                <div class="empty-space"></div>
+                <div class="wallet-icon wallet-icon-add wallet-icon-add-wallet"></div>
+            </a>
+        </div>
+    </section>
+
+    <section class="expenses">
+        <div class="header">
+            <h4 class="wallet-header">Expenses</h4>  
+        </div>
+
+        <div class="wallet-box">
+            @foreach (var item in ViewBag.Items)
+            {
+                if (item.State != true)
+                {
+                    <a class="wallet" href="/Home/Operation/@item.Id">
+                        <div class="wallet-name">@item.Name</div>
+                        <div class="wallet-icon wallet-icon-expense"></div>
+                        <div class="wallet-balance"><span class="ballance-money ballance-money-expenses"> @item.Balance</span></div>
+                    </a>
+                }
+            }
+            <a class="wallet add-wallet" href="/Home/AddRashod">
+                <div class="empty-space"></div>
+                <div class="wallet-icon wallet-icon-add wallet-icon-add-expense"></div>
+            </a>
+        </div>
+    </section>
+</div>
 
 
